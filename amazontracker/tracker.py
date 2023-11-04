@@ -44,6 +44,7 @@ def store_price(url, client):
     soup = BeautifulSoup(page.content, 'html.parser')
     title = soup.find(id='productTitle').get_text().strip()
     price = soup.find('span', class_='a-offscreen').get_text().replace('£', '')
+    client.write_points(create_data(title, price))
     print(create_data(title, price))
 
 if __name__ == "__main__":
