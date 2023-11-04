@@ -3,4 +3,3 @@ host = <hostname>
 port = <port>
 user = <user>
 pass = <passwd>
-db = <database>

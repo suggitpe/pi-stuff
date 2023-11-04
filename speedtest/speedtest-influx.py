@@ -37,5 +37,5 @@ client = InfluxDBClient(host=cfg.get('influxdb', 'host'),
                         port=cfg.get('influxdb', 'port'),
                         username=cfg.get('influxdb', 'user'),
                         password=cfg.get('influxdb', 'pass'),
-                        database=cfg.get('influxdb', 'db'))
+                        database='internetspeed')
 client.write_points(speed_data)
