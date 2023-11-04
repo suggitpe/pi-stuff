@@ -1,6 +1,10 @@
 import re
 import subprocess
+import configparser
 from influxdb import InfluxDBClient
+
+cfg = configparser.ConfigParser()
+cfg.read('config.txt')
 
 response = subprocess.Popen('/usr/bin/speedtest --accept-license --accept-gdpr', shell=True, stdout=subprocess.PIPE).stdout.read().decode('utf-8')
 
@@ -28,6 +32,10 @@ speed_data = [
         }
     }
 ]
-client = InfluxDBClient('datapi', 8086, 'speedmonitor', 'pimylifeup', 'internetspeed')
 
+client = InfluxDBClient(host=cfg.get('influxdb', 'host'),
+                        port=cfg.get('influxdb', 'port'),
+                        username=cfg.get('influxdb', 'user'),
+                        password=cfg.get('influxdb', 'pass'),
+                        database=cfg.get('influxdb', 'db'))
 client.write_points(speed_data)

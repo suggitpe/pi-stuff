@@ -1,0 +1,1 @@
+scp -pr speedtest/*.py pi@statspi:/home/pi/speedtest

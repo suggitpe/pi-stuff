@@ -1,5 +1,6 @@
 [influxdb]
-host =
-port =
-user =
-pass =
+host = <hostname>
+port = <port>
+user = <user>
+pass = <passwd>
+db = <database>
