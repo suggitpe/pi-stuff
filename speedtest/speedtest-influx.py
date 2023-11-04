@@ -22,7 +22,7 @@ speed_data = [
     {
         "measurement" : "internet_speed",
         "tags" : {
-            "host": "RaspberryPiMyLifeUp"
+            "host": "statspi"
         },
         "fields" : {
             "download": float(download),
