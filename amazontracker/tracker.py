@@ -6,6 +6,7 @@ from influxdb import InfluxDBClient
 HEADERS = {"User-Agent": 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36'}
 # HEADERS = {    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36",    'Accept': '*/*', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8'}
 # HEADERS = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36"}
+
 def configuration():
     config = configparser.ConfigParser()
     config.read('config.txt')
@@ -42,11 +43,17 @@ def get_prices():
 
 def store_price(url, client):
     page = requests.get(url, headers=HEADERS)
+    if(check_for_captcha(page.text)):
+        print("Found captcha for ", url)
+        return
     soup = BeautifulSoup(page.content, 'html.parser')
     title = soup.find(id='productTitle').get_text().strip()
     price = soup.find('span', class_='a-offscreen').get_text().replace('£', '')
-    client.write_points(create_data(title, price))
+#     client.write_points(create_data(title, price))
     print(create_data(title, price))
+
+def check_for_captcha(page_text):
+    return page_text.find('Type the characters you see in this image') > 1
 
 if __name__ == "__main__":
     get_prices()
