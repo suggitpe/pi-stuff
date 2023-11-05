@@ -11,6 +11,7 @@ args = argParser.parse_args()
 if args.config is None:
     raise Exception("Need a config file please")
 
+print("Reading configuration from", args.config)
 cfg = configparser.ConfigParser()
 cfg.read(args.config)
 
