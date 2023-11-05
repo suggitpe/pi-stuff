@@ -37,7 +37,7 @@ def create_data(name, price):
         {
             "measurement": "amazon_price",
             "tags": {
-                "host": "RaspberryPiMyLifeUp"
+                "host": "statspi"
             },
             "fields": {
                 "name": name[:50],
