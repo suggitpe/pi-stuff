@@ -21,7 +21,7 @@ def get_args():
 
 def get_prices():
     client = create_db_client()
-    with open('trackurls.txt') as f:
+    with open('urls.txt') as f:
         lines = [line.rstrip('\n') for line in f]
     for url in lines:
         store_price(url, client)
