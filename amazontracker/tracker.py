@@ -20,6 +20,33 @@ def create_db_client():
                           password=cfg.get('influxdb', 'pass'),
                           database='amazonprices')
 
+
+
+def get_prices():
+    client = create_db_client()
+    with open('trackurls.txt') as f:
+        lines = [line.rstrip('\n') for line in f]
+    for url in lines:
+        store_price(url, client)
+
+def store_price(url, client):
+    page = requests.get(url, headers=HEADERS)
+    if check_for_captcha(page.text):
+        print("Found captcha for ", url)
+        return
+    data = create_data_from_page(page)
+#     client.write_points(data)
+    print(data)
+
+def check_for_captcha(page_text):
+    return page_text.find('Type the characters you see in this image') > 1
+
+def create_data_from_page(page):
+    soup = BeautifulSoup(page.content, 'html.parser')
+    title = soup.find(id='productTitle').get_text().strip()
+    price = soup.find('span', class_='a-offscreen').get_text().replace('£', '')
+    return create_data(title, price)
+
 def create_data(name, price):
     return [
         {
@@ -34,26 +61,7 @@ def create_data(name, price):
         }
     ]
 
-def get_prices():
-    client = create_db_client()
-    with open('trackurls.txt') as f:
-        lines = [line.rstrip('\n') for line in f]
-    for url in lines:
-        store_price(url, client)
 
-def store_price(url, client):
-    page = requests.get(url, headers=HEADERS)
-    if(check_for_captcha(page.text)):
-        print("Found captcha for ", url)
-        return
-    soup = BeautifulSoup(page.content, 'html.parser')
-    title = soup.find(id='productTitle').get_text().strip()
-    price = soup.find('span', class_='a-offscreen').get_text().replace('£', '')
-#     client.write_points(create_data(title, price))
-    print(create_data(title, price))
-
-def check_for_captcha(page_text):
-    return page_text.find('Type the characters you see in this image') > 1
 
 if __name__ == "__main__":
     get_prices()
