@@ -20,8 +20,6 @@ def create_db_client():
                           password=cfg.get('influxdb', 'pass'),
                           database='amazonprices')
 
-
-
 def get_prices():
     client = create_db_client()
     with open('trackurls.txt') as f:
@@ -60,8 +58,6 @@ def create_data(name, price):
             }
         }
     ]
-
-
 
 if __name__ == "__main__":
     get_prices()
