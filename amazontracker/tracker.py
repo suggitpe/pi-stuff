@@ -1,6 +1,8 @@
 import argparse
 import configparser
 import random
+import os
+import time
 
 import requests
 from bs4 import BeautifulSoup
@@ -8,7 +10,6 @@ from influxdb import InfluxDBClient
 
 USER_AGENT_LIST = ['Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36',
                    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
-#                    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36',
                    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36',
                    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
                    'Mozilla/5.0 (X11; CrOS aarch64 13597.84.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.102 Safari/537.36',
@@ -19,30 +20,31 @@ USER_AGENT_LIST = ['Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, l
 
 ARGS = None
 CFG = None
+LOCAL_STORE = '~/amazon-prices.csv'
+
 
 def get_args():
     arg_parser = argparse.ArgumentParser()
     arg_parser.add_argument("-c", "--config", help="pass in a config file")
     arg_parser.add_argument("-i", "--influx", action="store_true", help="persist results to influxdb")
+    arg_parser.add_argument("-v", "--csv", action="store_true", help="persist results to local csv")
     arg_parser.add_argument("-d", "--debug", action="store_true", help="add debug details (eg headers)")
     args = arg_parser.parse_args()
     if args.config is None:
         raise Exception("Need a config file please")
-    if args.influx:
-        print("Storing to influx")
     return args
 
 
 def get_prices():
+    session = requests.Session()
     with open('urls.txt') as f:
         lines = [line.rstrip('\n') for line in f]
     for url_cfg in lines:
         cfg=url_cfg.split("|")
-        store_price(cfg[0], cfg[1])
+        store_price(session, cfg[0], cfg[1])
 
 
-def store_price(friendly_name, url):
-    session = requests.Session()
+def store_price(session, friendly_name, url):
     show_headers(session)
     page = session.get(url, headers=build_headers())
     if check_for_captcha(page.text):
@@ -55,7 +57,8 @@ def store_price(friendly_name, url):
 
 def build_headers():
     user_agent = random.choice(USER_AGENT_LIST)
-    print("Using agent:", user_agent)
+    if ARGS.debug:
+        print("Using agent:", user_agent)
     return {'User-Agent': user_agent,
     'accept-encoding': 'gzip, deflate, br',
     'accept-language': 'en-US,en;q=0.9,it;q=0.8,es;q=0.7',
@@ -64,8 +67,14 @@ def build_headers():
 
 def persist_data(data):
     if ARGS.influx:
+        print("Writing data to influxdb")
         db_client = create_db_client()
         db_client.write_points(data)
+    if ARGS.csv:
+        print("Wring data to CSV file")
+        f = open(LOCAL_STORE, 'a+')
+        if os.stat(LOCAL_STORE).st_size == 0:
+            f.write('Date,Time,Ping (ms),Jitter (ms),Download (Mbps),Upload (Mbps)\r\n')
 
 
 def check_for_captcha(page_text):
@@ -78,6 +87,7 @@ def create_data_from_page(friendly_name, page):
     price = soup.find('span', class_='a-offscreen').get_text().replace('£', '')
     return create_data(friendly_name, page_title, price)
 
+
 def create_data(friendly_name, page_title, price):
     return [
         {
@@ -86,6 +96,7 @@ def create_data(friendly_name, page_title, price):
                 "host": "statspi"
             },
             "fields": {
+                "datetime":time.strftime('%d-%m-%Y %H:%M'),
                 "friendly_name": friendly_name,
                 "name": page_title[:50],
                 "price": float(price)
@@ -108,7 +119,8 @@ def create_db_client():
 
 
 def read_configuration():
-    print("Reading config from", ARGS.config)
+    if ARGS.debug:
+        print("Reading config from", ARGS.config)
     config_data = configparser.ConfigParser()
     config_data.read(ARGS.config)
     return config_data
