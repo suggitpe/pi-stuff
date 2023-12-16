@@ -10,5 +10,9 @@
   * Enable SSH
   * Advanced -> expand filesystem
 * System update and upgrade
+* `sudo apt-get update && apt-get update`
+* `sudo apt-get -y git`
 
 ----
+## Install
+* 
