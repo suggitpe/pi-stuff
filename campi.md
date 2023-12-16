@@ -1,5 +1,7 @@
 # Cameras Pi (no OmxPlayer)
 
+----
+
 ## Initial
 * Install raspian bullseye
 * Open raspi-config
@@ -8,3 +10,5 @@
   * Enable SSH
   * Advanced -> expand filesystem
 * System update and upgrade
+
+----
