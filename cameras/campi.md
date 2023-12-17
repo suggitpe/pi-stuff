@@ -15,8 +15,14 @@
 * `sudo apt-get install -y git vim wget`
 
 ----
-##Install RpiSurv
-* Remove VLC
+## Instal older version of VLC
+* `sudo apt remove vlc -y && sudo apt autoremove -y`
+* `scp -pr vlc-3.0.17.4.tar.xz pi@campi1:/home/pi`
+* `sudo apt-get install libavformat-dev libavcodec-dev libavutil-dev libswscale-dev libavdevice-dev xcb`
+* `./configure --disable-lua --disable-avcodec --disable-a52`
+
+----
+## Install RpiSurv
 * Increase GPU memory to 512
 * Set tmp to tmpfs in fstab
 * Force set the screen resolution in /boot/config.txt to 1920 / 1080
