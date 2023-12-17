@@ -21,7 +21,7 @@
 * Set tmp to tmpfs in fstab
 * Force set the screen resolution in /boot/config.txt to 1920 / 1080
 * Clone `git clone https://github.com/SvenVD/rpisurv` --> dont do the install yet
-* ``
+* `scp -pr vlc-3.0.17.4.tar.xz pi@campi1:/home/pi`
 
 ----
 ## Install
