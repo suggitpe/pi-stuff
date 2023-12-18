@@ -26,8 +26,7 @@
 * [More details here](https://github.com/SvenVD/rpisurv)
 * You may need to tamper with the installer to push on through with the install even with VLC issues
 
-
-`
+```
     - camera_streams:
         - url: ""
         - url: ""
@@ -39,8 +38,7 @@
         - url: ""
       duration: 20
       nr_of_columns: 2
-
-`
+```
 
 
 
