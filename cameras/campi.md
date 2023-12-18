@@ -28,6 +28,19 @@
 
 
 
+    - camera_streams:
+        - url: ""
+        - url: ""
+        - url: ""
+        - url: ""
+      duration: 30
+      nr_of_columns: 2
+    - camera_streams:
+        - url: ""
+      duration: 20
+      nr_of_columns: 2
+
+
 
 
 
