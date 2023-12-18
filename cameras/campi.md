@@ -28,15 +28,11 @@
 
 ```
     - camera_streams:
-        - url: ""
-        - url: ""
-        - url: ""
-        - url: ""
+        - url: "rtsp://172.10.0.100:7447/Rm8pDxEh0W0bG3qZ"
+        - url: "rtsp://172.10.0.100:7447/TZCFSXMxZwOzepzt"
+        - url: "rtsp://172.10.0.100:7447/HTyBwszxgDTZhzjn"
+        - url: "rtsp://172.10.0.100:7447/4EmOx05plChk5Rta"
       duration: 30
-      nr_of_columns: 2
-    - camera_streams:
-        - url: ""
-      duration: 20
       nr_of_columns: 2
 ```
 
