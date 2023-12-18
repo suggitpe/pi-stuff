@@ -32,9 +32,10 @@ Note .. gave up on this shit ... cant get it working on anything
 ## Instal older version of VLC
 * `sudo apt remove vlc -y && sudo apt autoremove -y`
 * `scp -pr vlc-3.0.17.4.tar.xz pi@campi1:/home/pi`
-* `sudo apt-get install libavformat-dev libavcodec-dev libavutil-dev libswscale-dev libavdevice-dev xcb`
-* `./configure --disable-lua --disable-avcodec --disable-a52`
-Note ... gave up on this too ... complete crap
+* `sudo apt-get install <loads of stuff>`
+* `./configure`
+* `./compile`
+
 
 ----
 removed dependencies from vlc
