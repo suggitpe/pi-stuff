@@ -1,4 +1,4 @@
 #!/bin/sh
-echo "Shutting down now"
+echo "Rebooting now ..."
 sleep 5
-shutdown -h now
+shutdown --reboot --no-wall now
