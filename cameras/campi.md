@@ -26,6 +26,7 @@
 * [More details here](https://github.com/SvenVD/rpisurv)
 * You may need to tamper with the installer to push on through with the install even with VLC issues
 * Once install is done you will need to edit `/etc/rpisurv/display1.yml` or `/etc/rpisurv/display2.yml` (depending which HDMI port you use) to get rid of the bunny cartoons and install the cameras below
+* reminder shift + insert to paste into vi
 ```
     - camera_streams:
         - url: "rtsp://172.10.0.100:7447/Rm8pDxEh0W0bG3qZ"
