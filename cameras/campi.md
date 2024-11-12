@@ -24,6 +24,7 @@
 ## Install RpiSurv
 * Clone `git clone https://github.com/SvenVD/rpisurv` --> dont do the install yet
 * [More details here](https://github.com/SvenVD/rpisurv)
+* https://github.com/opensurv/opensurv <-- use this one ... 
 * You may need to tamper with the installer to push on through with the install even with VLC issues
 
 ```
