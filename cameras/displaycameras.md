@@ -69,10 +69,12 @@ Need to build the wifi driver first. Dongle is a rtl8188fu (Obda:f179).
 * restart to see changes take effect
 
 ## RTSP feeds
-* Gate: rtsp://172.10.0.100:7447/Rm8pDxEh0W0bG3qZ
-* Drive: rtsp://172.10.0.100:7447/TZCFSXMxZwOzepzt
-* LongGarden: rtsp://172.10.0.100:7447/HTyBwszxgDTZhzjn
-* BackGarden: rtsp://172.10.0.100:7447/4EmOx05plChk5Rta
+* Gate: rtsp://172.10.0.100:7447/ph6fdduPyeARIwq0
+* Drive-1: rtsp://172.10.0.100:7447/TZCFSXMxZwOzepzt
+* Drive-2: rtsp://172.10.0.100:7447/????
+* LongGarden-1: rtsp://172.10.0.100:7447/HTyBwszxgDTZhzjn
+* LongGarden-2: rtsp://172.10.0.100:7447/4EmOx05plChk5Rta
+* BackGarden: rtsp://172.10.0.100:7447/WlMcXZlOlMKhCREJ
 
 ## Links
 * [https://www.raspberrypi.com/tutorials/how-to-use-a-raspberry-pi-in-kiosk-mode/]
