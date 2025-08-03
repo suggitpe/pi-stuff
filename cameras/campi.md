@@ -28,13 +28,35 @@
 * Once install is done you will need to edit `/etc/rpisurv/display1.yml` or `/etc/rpisurv/display2.yml` (depending which HDMI port you use) to get rid of the bunny cartoons and install the cameras below
 * reminder shift + insert to paste into vi
 ```
+essentials:
+  screens:
     - camera_streams:
-        - url: "rtsp://172.10.0.100:7447/Rm8pDxEh0W0bG3qZ"
-        - url: "rtsp://172.10.0.100:7447/TZCFSXMxZwOzepzt"
+        - url: "rtsp://172.10.0.100:7447/ph6fdduPyeARIwq0"
+        - url: "rtsp://172.10.0.100:7447/kbJpCDwgAnCk6MXg"
         - url: "rtsp://172.10.0.100:7447/HTyBwszxgDTZhzjn"
-        - url: "rtsp://172.10.0.100:7447/4EmOx05plChk5Rta"
-      duration: 30
+        - url: "rtsp://172.10.0.100:7447/WlMcXZlOlMKhCREJ"
+      duration: 20
       nr_of_columns: 2
+```
+or
+```
+essentials:
+  screens:
+    - camera_streams:
+        - url: "rtsp://172.10.0.100:7447/ph6fdduPyeARIwq0"
+          force_coordinates: [600, 0, 1920, 800]
+        - url: "rtsp://172.10.0.100:7447/HTyBwszxgDTZhzjn"
+          force_coordinates: [0, 0, 600, 400]
+        - url: "rtsp://172.10.0.100:7447/4EmOx05plChk5Rta"
+          force_coordinates: [0, 400, 600, 800]
+        - url: "rtsp://172.10.0.100:7447/TZCFSXMxZwOzepzt"
+          force_coordinates: [1260, 800, 1920, 1080]
+        - url: "rtsp://172.10.0.100:7447/WlMcXZlOlMKhCREJ"
+          force_coordinates: [0, 800, 600, 1080]
+        - url: "rtsp://172.10.0.100:7447/kbJpCDwgAnCk6MXg"
+          force_coordinates: [600, 800, 1260, 1080]
+      duration: 20
+
 ```
 ----
 ## Opensurv
