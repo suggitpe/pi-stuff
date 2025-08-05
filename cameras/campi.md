@@ -32,14 +32,14 @@ essentials:
   screens:
     - streams:
         - url: "rtsp://172.10.0.100:7447/ph6fdduPyeARIwq0"
-          force_coordinates: [640, 0, 1920, 720]
+          force_coordinates: [0, 0, 1280, 720]
         - url: "rtsp://172.10.0.100:7447/HTyBwszxgDTZhzjn"
-          force_coordinates: [0, 0, 640, 360]
+          force_coordinates: [1280, 0, 1920, 360]
         - url: "rtsp://172.10.0.100:7447/4EmOx05plChk5Rta"
-          force_coordinates: [0, 360, 640, 720]
-        - url: "rtsp://172.10.0.100:7447/TZCFSXMxZwOzepzt"
-          force_coordinates: [0, 720, 640, 1080]
+          force_coordinates: [1280, 360, 1920, 720]
         - url: "rtsp://172.10.0.100:7447/kbJpCDwgAnCk6MXg"
+          force_coordinates: [0, 720, 640, 1080]
+        - url: "rtsp://172.10.0.100:7447/TZCFSXMxZwOzepzt"
           force_coordinates: [640, 720, 1280, 1080]
         - url: "rtsp://172.10.0.100:7447/WlMcXZlOlMKhCREJ"
           force_coordinates: [1280, 720, 1920, 1080]
