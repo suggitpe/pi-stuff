@@ -61,6 +61,8 @@ essentials:
 ----
 ## Opensurv
 * https://github.com/opensurv/opensurv <-- use this one ... but not just yet ... its coming soon
+* https://github.com/OpenSurv/OpenSurv/discussions/21 <-- details on how to get it working
+* `sudo apt install python3-yaml`
 
 
 
