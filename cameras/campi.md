@@ -30,7 +30,21 @@
 ```
 essentials:
   screens:
-    - camera_streams:
+    - streams:
+        - url: "rtsp://172.10.0.100:7447/ph6fdduPyeARIwq0"
+          force_coordinates: [640, 0, 1920, 720]
+        - url: "rtsp://172.10.0.100:7447/HTyBwszxgDTZhzjn"
+          force_coordinates: [0, 0, 640, 360]
+        - url: "rtsp://172.10.0.100:7447/4EmOx05plChk5Rta"
+          force_coordinates: [0, 360, 640, 720]
+        - url: "rtsp://172.10.0.100:7447/TZCFSXMxZwOzepzt"
+          force_coordinates: [0, 720, 640, 1080]
+        - url: "rtsp://172.10.0.100:7447/kbJpCDwgAnCk6MXg"
+          force_coordinates: [640, 720, 1280, 1080]
+        - url: "rtsp://172.10.0.100:7447/WlMcXZlOlMKhCREJ"
+          force_coordinates: [1280, 720, 1920, 1080]
+      duration: 20
+    - streams:
         - url: "rtsp://172.10.0.100:7447/ph6fdduPyeARIwq0"
         - url: "rtsp://172.10.0.100:7447/kbJpCDwgAnCk6MXg"
         - url: "rtsp://172.10.0.100:7447/HTyBwszxgDTZhzjn"
@@ -38,31 +52,13 @@ essentials:
       duration: 20
       nr_of_columns: 2
 ```
-or
-```
-essentials:
-  screens:
-    - camera_streams:
-        - url: "rtsp://172.10.0.100:7447/ph6fdduPyeARIwq0"
-          force_coordinates: [600, 0, 1920, 800]
-        - url: "rtsp://172.10.0.100:7447/HTyBwszxgDTZhzjn"
-          force_coordinates: [0, 0, 600, 400]
-        - url: "rtsp://172.10.0.100:7447/4EmOx05plChk5Rta"
-          force_coordinates: [0, 400, 600, 800]
-        - url: "rtsp://172.10.0.100:7447/TZCFSXMxZwOzepzt"
-          force_coordinates: [1260, 800, 1920, 1080]
-        - url: "rtsp://172.10.0.100:7447/WlMcXZlOlMKhCREJ"
-          force_coordinates: [0, 800, 600, 1080]
-        - url: "rtsp://172.10.0.100:7447/kbJpCDwgAnCk6MXg"
-          force_coordinates: [600, 800, 1260, 1080]
-      duration: 20
-
-```
 ----
 ## Opensurv
 * https://github.com/opensurv/opensurv <-- use this one ... but not just yet ... its coming soon
 * https://github.com/OpenSurv/OpenSurv/discussions/21 <-- details on how to get it working
 * `sudo apt install python3-yaml`
+* `sudo vim /etc/opensurv/monitor1.yml`
+* `sudo systemctl restart lightdm.service`
 
 
 
