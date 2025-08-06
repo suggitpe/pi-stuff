@@ -1,10 +1,10 @@
 #!/bin/sh
 
-echo "stopping rpisurv"
+echo "stopping camera service"
 sleep 5
-systemctl stop rpisurv
+systemctl stop lightdm.service
 
-echo "starting rpisurv"
+echo "starting camera service"
 sleep 5
-systemctl start rpisurv
+systemctl start lightdm.service
 
