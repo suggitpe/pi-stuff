@@ -61,6 +61,8 @@ essentials:
 * `sudo systemctl set-default graphical.target`
 * `sudo vim /etc/opensurv/monitor1.yml`
 * `sudo systemctl restart lightdm.service`
+* `sudo crontab -l > cron.jobs` & `crontab cron.jobs`
+* `sudo crontab < cron.jobs`
 
 
 
