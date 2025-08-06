@@ -19,6 +19,7 @@
 *  Force set the screen resolution 1920 / 1080
 *  Change `dtoverlay=vc4-kms-v3d` to `dtoverlay=vc4-fkms-v3d` ... add the 'f'
 * Sort .bashrc so the basics work
+* scp startRpiSurv.sh pi@campi1:/home/pi (etc)
 
 ----
 ## Install RpiSurv
