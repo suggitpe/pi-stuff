@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "stopping rpisurv"
+echo "stopping camera service"
 sleep 5
 systemctl stop lightdm.service
 
