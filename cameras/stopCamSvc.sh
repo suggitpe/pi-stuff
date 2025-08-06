@@ -2,7 +2,7 @@
 
 echo "stopping rpisurv"
 sleep 5
-systemctl stop rpisurv
+systemctl stop lightdm.service
 
 echo "stopping screen to save the screen"
 sleep 5

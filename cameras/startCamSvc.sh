@@ -1,5 +1,5 @@
 #!/bin/sh
 
-echo "starting rpisurv"
+echo "Starting camera service"
 sleep 5
-systemctl restart rpisurv
+systemctl start lightdm.service
