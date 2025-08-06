@@ -1,5 +1,6 @@
 #!/bin/sh
 
-echo "Starting camera service"
+echo "starting camera service"
 sleep 5
 systemctl start lightdm.service
+
