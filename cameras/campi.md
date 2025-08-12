@@ -64,5 +64,10 @@ essentials:
 * `sudo crontab -l > cron.jobs` & `crontab cron.jobs`
 * `sudo crontab < cron.jobs`
 
+----
+## For mini campi3
+* in /boot/firmware/config.txt
+  * comment out `dtoverlay=vc4-kms-v3d` and add in `lcd_rotate=2`
+
 
 
